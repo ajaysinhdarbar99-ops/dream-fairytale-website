@@ -213,6 +213,10 @@
 </div>
 
 <script>
+window.onerror = function(msg, url, line, col, err){
+  alert('JS ERROR: ' + msg + ' (line ' + line + ')');
+};
+
 /* ============ IMAGE PRELOAD (for smooth swipes) ============ */
 const allImagePaths = new Set([
   'Real photo.jpg','cartoon girl.png',
@@ -234,6 +238,7 @@ function preloadAllImages(){
 /* ============ AUDIO ============ */
 const bgMusic = document.getElementById('bgMusic');
 document.getElementById('tapMusicBtn').addEventListener('click', () => {
+  alert('button clicked, JS is running');
   bgMusic.volume = 0.7;
   bgMusic.play().catch(()=>{});
   preloadAllImages();
@@ -466,6 +471,4 @@ function renderScene(index){
     img.src = `girl ${selectedDress} butterflies.png`;
     div.appendChild(img);
   }
-  if(s.dynamic === 'normalDressWithDeer' && selectedDress){
-    // girl bigger/dominant, deer small and walks in from left
-    addCutout(div, `girl ${selectedDress} dress.png`, '
+  if(s.dynamic === 'norma
